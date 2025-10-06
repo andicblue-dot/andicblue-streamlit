@@ -11,6 +11,16 @@ from datetime import datetime
 
 st.set_page_config(page_title="AndicBlue - Pedidos & Flujo", page_icon="🫐", layout="wide")
 
+# --- LOGO DE ANDICBLUE EN LA BARRA LATERAL ---
+try:
+    logo_path = st.secrets.get("logo_path", "andicblue_logo.png")
+    st.sidebar.image(logo_path, width=160)
+except Exception as e:
+    st.sidebar.write("AndicBlue App")
+    st.sidebar.caption("⚠️ Logo no encontrado o inaccesible.")
+    
+st.title("Sistema de Gestión AndicBlue 🍇")
+
 # ---------------------------
 # CONFIG
 # ---------------------------
@@ -397,3 +407,4 @@ with col2:
 
 st.write("---")
 st.caption("Nota: Los montos por domicilio se almacenan y se muestran por separado y **no** se suman al total de ingresos por productos (para reflejar el ingreso operativo real).")
+
