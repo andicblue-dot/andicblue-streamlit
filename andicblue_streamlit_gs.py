@@ -405,13 +405,15 @@ with col2:
 if os.path.exists(logo_path):
     st.sidebar.image(logo_path, width=160)
 else:
-    st.sidebar.warning("Logo de AndicBlue no encontrado.")
+    st.sidebar.warning("Logo de AndicBlue no encontrado. Verifica la ruta o sube el archivo al repositorio.")
+    
     st.sidebar.markdown("**AndicBlue** — App desplegada en Streamlit Cloud")
     st.sidebar.write("Instrucciones rápidas:")
     st.sidebar.info("Registrar clientes → crear pedidos → marcar entrega y registrar pagos → revisar flujo & gastos.")
 
 st.write("---")
 st.caption("Nota: Los montos por domicilio se almacenan y se muestran por separado y **no** se suman al total de ingresos por productos (para reflejar el ingreso operativo real).")
+
 
 
 
