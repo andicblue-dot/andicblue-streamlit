@@ -6,6 +6,7 @@
 import streamlit as st
 import pandas as pd
 import gspread
+import os
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 
@@ -400,13 +401,18 @@ with col1:
         st.dataframe(df_from_ws(ws_pedidos), use_container_width=True)
 
 with col2:
-    st.sidebar.image("andicblue_logo.png" if st.secrets.get("logo_path") is None else st.secrets["logo_path"], width=160)
+   logo_path = "images/andicblue_logo.png"
+if os.path.exists(logo_path):
+    st.sidebar.image(logo_path, width=160)
+else:
+    st.sidebar.warning("Logo de AndicBlue no encontrado.")
     st.sidebar.markdown("**AndicBlue** — App desplegada en Streamlit Cloud")
     st.sidebar.write("Instrucciones rápidas:")
     st.sidebar.info("Registrar clientes → crear pedidos → marcar entrega y registrar pagos → revisar flujo & gastos.")
 
 st.write("---")
 st.caption("Nota: Los montos por domicilio se almacenan y se muestran por separado y **no** se suman al total de ingresos por productos (para reflejar el ingreso operativo real).")
+
 
 
 
